@@ -15,17 +15,28 @@ function TodoList() {
     });
     setTodos(updatedTodos);
   };
+  const toggleCompletion = (id) => {
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, completed: !todo.completed };
+      }
+      return todo;
+    });
+    setTodos(updatedTodos);
+  };
   return (
     <div>
       <h1>Todo List!</h1>
       <ul>
-        {todos.map(({ task, id }) => (
+        {todos.map(({ task, id, completed }) => (
           <Todo
             key={id}
             id={id}
             task={task}
             removeTodo={removeTodo}
             update={updateTodo}
+            completed={completed}
+            toggleCompletion={() => toggleCompletion(id)}
           />
         ))}
       </ul>

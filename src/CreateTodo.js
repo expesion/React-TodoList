@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
 function CreateTodo({ addTodo }) {
-  const [task, setTask] = useState({ task: "" });
+  const [task, setTask] = useState({ task: "", id: "", completed: false });
   const handSubmit = (e) => {
     e.preventDefault();
     addTodo((t) => {
-      return [...t, { ...task, id: uuid() }];
+      return [...t, { ...task, id: uuid(), completed: false }];
     });
     setTask({ task: "" });
   };

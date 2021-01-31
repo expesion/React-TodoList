@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
+import "./Todo.css";
 
-function Todo({ task, removeTodo, id, update }) {
+function Todo({ task, removeTodo, id, update, completed, toggleCompletion }) {
   let [editing, setEditing] = useState(false);
   let updateTodo = useRef();
   const handleUpdate = (e) => {
@@ -19,7 +20,9 @@ function Todo({ task, removeTodo, id, update }) {
     <div>
       <button onClick={() => setEditing(!editing)}>Edit</button>
       <button onClick={() => removeTodo(id)}>X</button>
-      <li>{task}</li>
+      <li className={completed && "completed"} onClick={toggleCompletion}>
+        {task}
+      </li>
     </div>
   );
 }
