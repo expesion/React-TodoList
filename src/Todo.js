@@ -10,19 +10,28 @@ function Todo({ task, removeTodo, id, update, completed, toggleCompletion }) {
     setEditing(false);
   };
   return editing ? (
-    <div>
-      <form onSubmit={handleUpdate}>
+    <div className="Todo">
+      <form className="Todo-edit-form" onSubmit={handleUpdate}>
         <input type="text" ref={updateTodo} defaultValue={task} />
         <button>Save</button>
       </form>
     </div>
   ) : (
-    <div>
-      <button onClick={() => setEditing(!editing)}>Edit</button>
-      <button onClick={() => removeTodo(id)}>X</button>
-      <li className={completed && "completed"} onClick={toggleCompletion}>
+    <div className="Todo">
+      <li
+        className={completed ? "Todo-task completed" : "Todo-task"}
+        onClick={toggleCompletion}
+      >
         {task}
       </li>
+      <div className="Todo-buttons">
+        <button onClick={() => setEditing(!editing)}>
+          <i className="fas fa-pen"></i>
+        </button>
+        <button onClick={() => removeTodo(id)}>
+          <i className="fas fa-trash"></i>
+        </button>
+      </div>
     </div>
   );
 }

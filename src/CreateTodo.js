@@ -10,7 +10,7 @@ function CreateTodo({ addTodo }) {
     setTask({ task: "" });
   };
   return (
-    <form onSubmit={handSubmit}>
+    <form className="NewTodoForm" onSubmit={handSubmit}>
       <label htmlFor="task">New Todo</label>
       <input
         type="text"

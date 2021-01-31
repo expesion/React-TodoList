@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CreateTodo from "./CreateTodo";
 import Todo from "./Todo";
+import "./TodoList.css";
 function TodoList() {
   const [todos, setTodos] = useState(() => []);
   const removeTodo = (id) => {
@@ -25,8 +26,10 @@ function TodoList() {
     setTodos(updatedTodos);
   };
   return (
-    <div>
-      <h1>Todo List!</h1>
+    <div className="TodoList">
+      <h1>
+        Todo List! <span>A Simple React Todo List App</span>
+      </h1>
       <ul>
         {todos.map(({ task, id, completed }) => (
           <Todo
